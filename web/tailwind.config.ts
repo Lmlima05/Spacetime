@@ -49,8 +49,13 @@ module.exports = {
           800: '#027435',
           900: '#025929'
       },
+      },
+    fontSize: { },
+
+      blur: {
+        full: '194px',
+      },
     },
   },
-},
   plugins: [],
 }
