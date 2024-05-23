@@ -32,10 +32,10 @@ export default function App() {
   return (
     <ImageBackground 
     source={blurBg}
-      className="bg-gray-900 flex-1 items-center justify-center"
+      className="relative bg-gray-900 flex-1 items-center"
       imageStyle={{ position: 'absolute', left: '-100%' }}
     >
-      <StyledStripes className="absoluto left-2" />
+      <StyledStripes className="absolute left-2" />
 
       <View className="flex-1 items-center justify-center gap-6" >
         <NLWLogo />
@@ -44,7 +44,7 @@ export default function App() {
           <Text className="text-center font-title text-2xl leading-tight text-gray-50">
             Sua cápsula do tempo
           </Text>
-          <Text className="">
+          <Text className="text-center font-body text-base leading-relaxed">
             Colecione momentos marcantes da sua jornada e compartilhe (se quiser) com o mundo!
           </Text>
         </View>
