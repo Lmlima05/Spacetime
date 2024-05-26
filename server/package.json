@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "fastify": "^4.26.2",
-    "migrate": "^2.1.0"
+    "migrate": "^2.1.0",
+    "sqlite3": "^5.1.7"
   }
 }
