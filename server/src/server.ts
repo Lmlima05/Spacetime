@@ -1,5 +1,5 @@
 import fastify from 'fastify'
-import { PrismaClient } from '@prisma/client'
+import { memoriesRoutes } from './routes/memories';
 
 const app = fastify();
 
