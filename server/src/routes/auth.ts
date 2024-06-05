@@ -1,0 +1,17 @@
+import { fastiFyInstance } from 'festify'
+import  axios from 'axios'
+import { z } from 'zod' 
+
+export async function authRoutes(app: FastiInstace) {
+  app.post('/register', async (request) => {
+    const bodySchema = z.object({
+      code: z.string(),
+    })
+    
+    const { code } bodySchema.parse(request.body)
+
+    const accessTokenResponse = await axios.post(
+      'https://github.com/login/oauth/access_token',
+    )
+  })
+}
