@@ -3,8 +3,15 @@ import { z } from 'zod'
 import { prisma } from '../lib/prisma'
 
 export async function memoriesRoutes(app: FastifyInstance) {
-  app.get('/memories', async () => {
+  app.addHook('preHandler', async (request) => {
+    await request.jwtVerify()
+  })
+
+  app.get('/memories', async (request) => {
     const memories = await prisma.memory.findMany({
+      where: {
+        userId: request.user.sub,
+      },
       orderBy: {
         createdAt: 'asc',
       },
@@ -35,7 +42,6 @@ export async function memoriesRoutes(app: FastifyInstance) {
     return memory
   })
 
-
   app.post('/memories', async (request) => {
     const bodySchema = z.object({
       content: z.string(),
@@ -50,7 +56,7 @@ export async function memoriesRoutes(app: FastifyInstance) {
         content,
         coverUrl,
         isPublic,
-        userId: 'a763a3d7-4118-4f96-a5ae-606a0282e2e1',
+        userId: request.user.sub,
       },
     })
 
