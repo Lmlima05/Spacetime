@@ -12,13 +12,14 @@ import {
   BaiJamjuree_700Bold,
 } from '@expo-google-fonts/bai-jamjuree'
 
-import blurBg from './src/assets/bg-blur.png'
-import Stripes from './src/assets/stripes.svg'
-import NLWLogo from './src/assets/nlw-spacetime-logo.svg'
+import blurBg from '../src/assets/bg-blur.png'
+import Stripes from '../src/assets/stripes.svg'
+import NLWLogo from '../src/assets/nlw-spacetime-logo.svg'
 import { styled } from 'nativewind'
 import { makeRedirectUri, useAuthRequest } from 'expo-auth-session';
 import { useEffect } from 'react';
 import { api } from '../src/lib/api';
+import { functionsIn } from 'cypress/types/lodash';
 
 const StyledStripes = styled(Stripes)
 
@@ -45,6 +46,21 @@ export default function App() {
     discovery
   )
 
+  async function handleGithubOAuthCode(code: string) {
+    const reponse = await api
+    .post('/register', {
+      code,
+    })
+    .then((response) => {
+      const { token } = response.data
+
+      SecureStore.setItemAsync('token', 'token')
+    })
+    .catch((err) => {
+      console.error(err)
+    })
+  }
+
   useEffect(() => {
     // Esse código serve para pegar o ip da máquina 
     //para cadastrar no github para autenticar o token
@@ -57,15 +73,7 @@ export default function App() {
     if (response?.type === 'success') {
       const { code } = response.params
 
-      api
-        .post('/register', {
-          code,
-        })
-        .then((response) => {
-          const { token } = response.data
-
-          SecureStore.setItemAsync('token', 'token')
-        })
+      handleGithubOAuthCode(code)
     }
   }, [response]);
 
