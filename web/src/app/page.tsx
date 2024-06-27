@@ -22,7 +22,6 @@ export default function Home() {
         <Hero />
         <Copyright />  
       </div>
-
       {/* Right */}
       <div className="flex flex-col bg-[url(../assets/bg-stars.svg)] bg-cover p-16">
         <EmptyMemories />

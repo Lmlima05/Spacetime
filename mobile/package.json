@@ -1,7 +1,7 @@
 {
   "name": "mobile",
   "version": "1.0.0",
-  "main": "expo/AppEntry.js",
+  "main": "index.js",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
@@ -25,13 +25,22 @@
     "react": "18.2.0",
     "react-native": "0.74.1",
     "react-native-svg": "15.2.0",
-    "expo-secure-store": "~13.0.1"
+    "expo-secure-store": "~13.0.1",
+    "expo-router": "~3.5.16",
+    "react-native-safe-area-context": "4.10.1",
+    "react-native-screens": "3.31.1",
+    "expo-linking": "~6.3.1",
+    "expo-constants": "~16.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "prettier-plugin-tailwindcss": "^0.5.14",
     "react-native-svg-transformer": "^1.4.0",
     "tailwindcss": "^3.3.2"
+  },
+  "overrides": {
+    "metro": "0.76.0",
+    "metro-resolver": "0.76.0"
   },
   "private": true
 }

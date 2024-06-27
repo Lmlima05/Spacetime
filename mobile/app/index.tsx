@@ -18,7 +18,7 @@ import NLWLogo from './src/assets/nlw-spacetime-logo.svg'
 import { styled } from 'nativewind'
 import { makeRedirectUri, useAuthRequest } from 'expo-auth-session';
 import { useEffect } from 'react';
-import { api } from './src/lib/api';
+import { api } from '../src/lib/api';
 
 const StyledStripes = styled(Stripes)
 
