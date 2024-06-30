@@ -20,6 +20,7 @@ import { makeRedirectUri, useAuthRequest } from 'expo-auth-session';
 import { useEffect } from 'react';
 import { api } from '../src/lib/api';
 import { functionsIn } from 'cypress/types/lodash';
+import { router } from 'expo-router';
 
 const StyledStripes = styled(Stripes)
 
@@ -47,18 +48,15 @@ export default function App() {
   )
 
   async function handleGithubOAuthCode(code: string) {
-    const reponse = await api
-    .post('/register', {
+    const response = await api.post('/register', {
       code,
     })
-    .then((response) => {
-      const { token } = response.data
+    
+    const { token } = response.data
 
-      SecureStore.setItemAsync('token', 'token')
-    })
-    .catch((err) => {
-      console.error(err)
-    })
+    await SecureStore.setItemAsync('token', token)
+
+    router.push('/memories')
   }
 
   useEffect(() => {
