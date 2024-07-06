@@ -15,10 +15,13 @@ export function Profile () {
       />
 
       <p className="max-w-[140px] text-sm leading-snug">
-        <span className="underline">Crie sua conta</span> e salve suas memórias!
-        <a href="" className="block text-red-400 hover:text-red-300">
+        {name}
+        <link
+          href="/api/auth/logout" 
+          className="block text-red-400 hover:text-red-300"
+        >
           Quero sair
-        </a>
+        </link>
       </p>
     </div>        
   )
