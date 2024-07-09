@@ -32,6 +32,12 @@ export default function NewMemory() {
         </div>
 
         <input type="file" id="media" className="invisible" />
+
+        <textarea
+          name="content"
+          spellCheck={false}
+          className="w-full flex-1 resize-none rounded border-0 bg-transparent p-0 text-lg leading-relaxed text-gray-100 placeholder:text-gray-400"
+        />  
       </form>
     </div>   
   )
