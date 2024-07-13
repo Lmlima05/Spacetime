@@ -3,11 +3,33 @@ import { styled } from 'nativewind'
 import blurBg from '../src/assets/bg-blur.png'
 import Stripes from '../src/assets/stripes.svg'
 
+import {
+  useFonts,
+  Roboto_400Regular,
+  Roboto_700Bold,
+} from '@expo-google-fonts/roboto'
+
+import {
+  BaiJamjuree_700Bold,
+} from '@expo-google-fonts/bai-jamjuree'
+
 import { ImageBackground } from "react-native";
 
 const StyledStripes = styled(Stripes)
 
 export default function layout() {
+
+  export default function App() {
+    const [hasLoadedFonts] = useFonts({
+      Roboto_400Regular,
+      Roboto_700Bold,
+      BaiJamjuree_700Bold,
+    })
+
+    if (!hasLoadedFonts) {
+      return null
+    }
+
   return (
     <ImageBackground 
       source={blurBg}

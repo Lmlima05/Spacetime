@@ -2,16 +2,6 @@ import { StatusBar } from 'expo-status-bar';
 import { ImageBackground, View, Text, TouchableOpacity} from 'react-native';
 import * as SecureStore from 'expo-secure-store'
 
-import {
-  useFonts,
-  Roboto_400Regular,
-  Roboto_700Bold,
-} from '@expo-google-fonts/roboto'
-
-import {
-  BaiJamjuree_700Bold,
-} from '@expo-google-fonts/bai-jamjuree'
-
 import blurBg from '../src/assets/bg-blur.png'
 import Stripes from '../src/assets/stripes.svg'
 import NLWLogo from '../src/assets/nlw-spacetime-logo.svg'
@@ -29,12 +19,6 @@ const discovery = {
   tokenEndpoint: 'https://github.com/login/oauth/access_token',
   revocationEndpoint: 'https://github.com/settings/connections/applications/Ov23liQjYaC7Dp6zoiiu',
 };
-export default function App() {
-  const [hasLoadedFonts] = useFonts({
-    Roboto_400Regular,
-    Roboto_700Bold,
-    BaiJamjuree_700Bold,
-  })
 
   const [request, response, singInWithGithub] = useAuthRequest(
     {
@@ -74,10 +58,6 @@ export default function App() {
       handleGithubOAuthCode(code)
     }
   }, [response]);
-
-  if (!hasLoadedFonts) {
-    return null
-  }
 
   return (
     <ImageBackground 
