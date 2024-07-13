@@ -1,15 +1,10 @@
-import { StatusBar } from 'expo-status-bar';
-import { ImageBackground, View, Text, TouchableOpacity} from 'react-native';
 import * as SecureStore from 'expo-secure-store'
 
-import blurBg from '../src/assets/bg-blur.png'
 import Stripes from '../src/assets/stripes.svg'
-import NLWLogo from '../src/assets/nlw-spacetime-logo.svg'
 import { styled } from 'nativewind'
 import { makeRedirectUri, useAuthRequest } from 'expo-auth-session';
 import { useEffect } from 'react';
 import { api } from '../src/lib/api';
-import { functionsIn } from 'cypress/types/lodash';
 import { router } from 'expo-router';
 
 const StyledStripes = styled(Stripes)
@@ -20,7 +15,7 @@ const discovery = {
   revocationEndpoint: 'https://github.com/settings/connections/applications/Ov23liQjYaC7Dp6zoiiu',
 };
 
-  const [request, response, singInWithGithub] = useAuthRequest(
+  const [ response, singInWithGithub] = useAuthRequest(
     {
       clientId: 'Ov23liQjYaC7Dp6zoiiu',
       scopes: ['identity'],
@@ -60,13 +55,7 @@ const discovery = {
   }, [response]);
 
   return (
-    <ImageBackground 
-      source={blurBg}
-      className="relative bg-gray-900 flex-1 items-center px-8 py-10"
-      imageStyle={{ position: 'absolute', left: '-100%' }}
-    >
-      <StyledStripes className="absolute left-2" />
-
+    <View  className="flex-1 items-center px-8 py-10">
       <View className="flex-1 items-center justify-center gap-6" >
         <NLWLogo />
 
@@ -94,7 +83,6 @@ const discovery = {
           Feito com 💜 no NLW da RockeSeat
         </Text> 
 
-        <StatusBar style="light" translucent />
-    </ImageBackground>
+    </View>
   )
-}
+} 

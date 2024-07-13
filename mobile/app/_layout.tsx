@@ -14,6 +14,8 @@ import {
 } from '@expo-google-fonts/bai-jamjuree'
 
 import { ImageBackground } from "react-native";
+import { StatusBar } from 'expo-status-bar'
+import { SplashScreen } from 'expo-router'
 
 const StyledStripes = styled(Stripes)
 
@@ -27,7 +29,7 @@ export default function layout() {
     })
 
     if (!hasLoadedFonts) {
-      return null
+      return <SplashScreen />
     }
 
   return (
@@ -37,6 +39,8 @@ export default function layout() {
       imageStyle={{ position: 'absolute', left: '-100%' }}
     >
       <StyledStripes className="absolute left-2" />
+      <StatusBar style="light" translucent />
+      
     </ImageBackground>
 
   )
