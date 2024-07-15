@@ -15,7 +15,8 @@ import {
 
 import { ImageBackground } from "react-native";
 import { StatusBar } from 'expo-status-bar'
-import { SplashScreen } from 'expo-router'
+import { Slot, SplashScreen, Stack } from 'expo-router'
+import React from 'react'
 
 const StyledStripes = styled(Stripes)
 
@@ -35,13 +36,17 @@ export default function layout() {
   return (
     <ImageBackground 
       source={blurBg}
-      className="relative bg-gray-900 flex-1 items-center px-8 py-10"
+      className="relative bg-gray-900 flex-1"
       imageStyle={{ position: 'absolute', left: '-100%' }}
     >
       <StyledStripes className="absolute left-2" />
       <StatusBar style="light" translucent />
-      
+      <Stack 
+        screenOptions={{
+          headerShown: false,
+          contentStyle: { background: 'transparent' },
+        }}
+      />
     </ImageBackground>
-
   )
 }
