@@ -15,23 +15,29 @@ import {
 
 import { ImageBackground } from "react-native";
 import { StatusBar } from 'expo-status-bar'
-import { Slot, SplashScreen, Stack } from 'expo-router'
-import React from 'react'
+import { SplashScreen, Stack } from 'expo-router'
+import React, { useState } from 'react'
 
 const StyledStripes = styled(Stripes)
 
-export default function layout() {
+export default function Layout() {
+  const [isUserAuthenticated, setIsUserAuthenticate] = useState<null | boolean>(
+    null,
+  )
 
-  export default function App() {
-    const [hasLoadedFonts] = useFonts({
-      Roboto_400Regular,
-      Roboto_700Bold,
-      BaiJamjuree_700Bold,
-    })
+  const [hasLoadedFonts] = useFonts({
+    Roboto_400Regular,
+    Roboto_700Bold,
+    BaiJamjuree_700Bold,
+  })
 
-    if (!hasLoadedFonts) {
-      return <SplashScreen />
-    }
+  useEffect(() => {
+    Secure
+  }, [])
+
+  if (!hasLoadedFonts) {
+    return <SplashScreen />
+  }
 
   return (
     <ImageBackground 
