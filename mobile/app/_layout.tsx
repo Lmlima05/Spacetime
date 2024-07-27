@@ -47,10 +47,11 @@ export default function Layout() {
     >
       <StyledStripes className="absolute left-2" />
       <StatusBar style="light" translucent />
+
       <Stack 
         screenOptions={{
           headerShown: false,
-          contentStyle: { background: 'transparent' },
+          contentStyle: { backgroundColor: 'transparent' },
         }}
       />
     </ImageBackground>
