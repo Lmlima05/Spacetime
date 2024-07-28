@@ -1,7 +1,5 @@
 import { styled } from 'nativewind'
-
-import blurBg from '../src/assets/bg-blur.png'
-import Stripes from '../src/assets/stripes.svg'
+import { ImageBackground } from "react-native";
 
 import {
   useFonts,
@@ -9,14 +7,14 @@ import {
   Roboto_700Bold,
 } from '@expo-google-fonts/roboto'
 
-import {
-  BaiJamjuree_700Bold,
-} from '@expo-google-fonts/bai-jamjuree'
+import { BaiJamjuree_700Bold } from '@expo-google-fonts/bai-jamjuree'
 
-import { ImageBackground } from "react-native";
-import { StatusBar } from 'expo-status-bar'
+import blurBg from '../src/assets/bg-blur.png'
+import Stripes from '../src/assets/stripes.svg'
 import { SplashScreen, Stack } from 'expo-router'
-import React, { useState } from 'react'
+import { StatusBar } from 'expo-status-bar'
+import * as SecureStore from 'expo-secure-store'
+import React, { useEffect, useState } from 'react'
 
 const StyledStripes = styled(Stripes)
 
@@ -24,16 +22,20 @@ export default function Layout() {
   const [isUserAuthenticated, setIsUserAuthenticate] = useState<null | boolean>(
     null,
   )
-
   const [hasLoadedFonts] = useFonts({
     Roboto_400Regular,
     Roboto_700Bold,
     BaiJamjuree_700Bold,
   })
+}
 
-  useEffect(() => {
-    Secure
-  }, [])
+useEffect(() => {
+  SecureStore.getItemAsync('token').then((token) => {
+    console.log(!!token)
+
+    setIsUserAuthenticate(!!token)
+  })
+}, [])
 
   if (!hasLoadedFonts) {
     return <SplashScreen />
@@ -53,7 +55,14 @@ export default function Layout() {
           headerShown: false,
           contentStyle: { backgroundColor: 'transparent' },
         }}
-      />
+      >
+        <Stack.Screen name="index" />
+        <Stack.Screen name="memories" />
+      </Stack>
     </ImageBackground>
   )
+}
+
+function setIsUserAuthenticate(arg0: boolean) {
+  throw new Error('Function not implemented.');
 }
