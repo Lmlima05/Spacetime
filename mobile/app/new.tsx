@@ -1,12 +1,15 @@
 import { Link } from 'expo-router'
-import React from 'react'
+import React, { useState } from 'react'
 import { Switch, Touchable, TouchableOpacity, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import Icon from '@expo/vector-icons/Feather'
 import NLWLogo from '../src/assets/nlw-spacetime-logo.svg'
+import { isObject } from 'cypress/types/lodash'
 
 export default function NewMemory() {
   const { bottom, top } = useSafeAreaInsets()
+
+  const [isPublic, setIsPublic] = useState(false)
 
   return (
     <View 
@@ -25,7 +28,15 @@ export default function NewMemory() {
 
       <View className="mt-6 space-y-6">
         <View className="flex-row items-center gap-2">
-          <Switch value={true} />
+          <Switch 
+            value={isPublic} 
+            onValueChange={setIsPublic}
+            trackColor={{false: '#767577', true: '#372560'}}
+            thumbColor={isPublic ? '#9b79ea' : '9e9ea0' }
+          />
+          <Text className="font-body text-base text-gray-200">
+            Tornar memória pública
+          </Text>
         </View>
       </View>
     </View>  
