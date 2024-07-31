@@ -1,5 +1,5 @@
 import { styled } from 'nativewind'
-import { ImageBackground } from "react-native";
+import { ImageBackground } from 'react-native'
 
 import {
   useFonts,
@@ -14,55 +14,51 @@ import Stripes from '../src/assets/stripes.svg'
 import { SplashScreen, Stack } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
 import * as SecureStore from 'expo-secure-store'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const StyledStripes = styled(Stripes)
 
 export default function Layout() {
-  const [isUserAuthenticated, setIsUserAuthenticate] = useState<null | boolean>(
-    null,
-  )
+  const [isUserAuthenticated, setIsUserAuthenticated] = useState<
+    null | boolean
+  >(null)
+
   const [hasLoadedFonts] = useFonts({
     Roboto_400Regular,
     Roboto_700Bold,
     BaiJamjuree_700Bold,
   })
-}
 
-useEffect(() => {
-  SecureStore.getItemAsync('token').then((token) => {
-    console.log(!!token)
-
-    setIsUserAuthenticate(!!token)
-  })
-}, [])
+  useEffect(() => {
+    SecureStore.getItemAsync('token').then((token) => {
+      setIsUserAuthenticated(!!token)
+    })
+  }, [])
 
   if (!hasLoadedFonts) {
     return <SplashScreen />
   }
 
   return (
-    <ImageBackground 
+    <ImageBackground
       source={blurBg}
-      className="relative bg-gray-900 flex-1"
+      className="relative flex-1 bg-gray-900"
       imageStyle={{ position: 'absolute', left: '-100%' }}
     >
       <StyledStripes className="absolute left-2" />
       <StatusBar style="light" translucent />
 
-      <Stack 
+      <Stack
         screenOptions={{
           headerShown: false,
           contentStyle: { backgroundColor: 'transparent' },
+          animation: 'fade',
         }}
       >
-        <Stack.Screen name="index" />
+        <Stack.Screen name="index" redirect={isUserAuthenticated} />
         <Stack.Screen name="memories" />
+        <Stack.Screen name="new" />
       </Stack>
     </ImageBackground>
   )
-}
-
-function setIsUserAuthenticate(arg0: boolean) {
-  throw new Error('Function not implemented.');
 }
