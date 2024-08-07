@@ -12,7 +12,6 @@ export default function NewMemory() {
         voltar à timeline
       </Link>
       
-      
     </div>   
   )
 } 
