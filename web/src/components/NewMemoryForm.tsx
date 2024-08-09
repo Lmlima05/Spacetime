@@ -3,14 +3,23 @@
 import { Camera } from "lucide-react";
 import { MediaPicker } from "./MediaPicker"
 import { FormEvent } from "react";
+import { api } from "@/lib/api";
 
 export function NewMemoryFrom() {
-  function handleCreateMemory(event: FormEvent<HTMLFormElement>) {
+  async function handleCreateMemory(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
     const formData = new FormData(event.currentTarget)
 
-    console.log(Array.from(formData.entries()))
+    const fileToUpload = formData.get('coverUrl')
+
+  if (fileToUpload) {
+    const uploadFormData = new FormData()
+    uploadFormData.set('file', fileToUpload)
+
+    const uploadResponse = await api.post('/upload', uploadFormData)
+
+    console.log(uploadResponse.data)
   }
  
   return (
