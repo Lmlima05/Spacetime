@@ -26,6 +26,8 @@ export function NewMemoryFrom() {
     coverUrl = uploadResponse.data.fileUrl
   } 
 
+  console.log(document.cookie)
+  3
   await api.post('/memories', {
     coverUrl,
     content: formData.get('coverUrl'),
