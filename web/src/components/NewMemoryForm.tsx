@@ -13,6 +13,8 @@ export function NewMemoryFrom() {
 
     const fileToUpload = formData.get('coverUrl')
 
+    let coverUrl = ''
+
   if (fileToUpload) {
     const uploadFormData = new FormData()
     uploadFormData.set('file', fileToUpload)
@@ -20,7 +22,17 @@ export function NewMemoryFrom() {
     const uploadResponse = await api.post('/upload', uploadFormData)
 
     console.log(uploadResponse.data)
-  }
+
+    coverUrl = uploadResponse.data.fileUrl
+  } 
+
+  await api.post('/memories', {
+    coverUrl,
+    content: formData.get('coverUrl'),
+    isPublic: formData.get('isPublic'),
+  })
+
+}
  
   return (
     <form
