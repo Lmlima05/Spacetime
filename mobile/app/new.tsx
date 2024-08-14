@@ -26,10 +26,6 @@ export default function NewMemory() {
   const [content, setContent] = useState('')
   const [isPublic, setIsPublic] = useState(false)
 
-  function handleCreateMemory2() {
-    console.log(content, isPublic)
-  }
-
   async function openImagePicker() {
     try {
       const result = await ImagePicker.launchImageLibraryAsync({

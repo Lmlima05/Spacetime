@@ -16,9 +16,15 @@ return (
   <View className="mt-4 flex-row items-center justify-between">
     <NLWLogo />
 
-    <Link href="/memories" asChild>
-      <TouchableOpacity className="h-10 w-10 items-center justify-center rounded-full">
-        <Icon name="arrow-left" size={16} color="#FFF" />
+    <View className="flex-row gap-2">
+      <TouchableOpacity className="h-10 w-10 items-center justify-center rounded-full bg-green-500">
+        <Icon name="plus" size={16} color="#000" />
+      </TouchableOpacity>
+    </View>
+
+    <Link href="/new" asChild>
+      <TouchableOpacity className="h-10 w-10 items-center justify-center rounded-full bg-green-500">
+        <Icon name="plus" size={16} color="#000" />
       </TouchableOpacity>  
     </Link>
   </View>  
