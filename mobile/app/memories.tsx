@@ -36,6 +36,20 @@ return (
       </TouchableOpacity>  
     </Link>
   </View>  
+
+  <View className="mt-6 space-y-10">
+    <View className="space-y-4">
+      <Text>12 de Abril, 2024</Text>
+      <View className="space-y-4 px-8">
+        <Image 
+          source={{ uri: 'https://192.168.1.6:3333/uploads'
+          }}
+          className="aspect-video w-full rouded-lg"
+          alt=""
+        />
+      </View>
+    </View>
+  </View>
 </ScrollView>
 
 )
