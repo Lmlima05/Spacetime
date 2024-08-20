@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  iamges: {
-    domains: ['avatars.githubusercontent.com'],
-  }
+  images: {
+    domains: ['avatars.githubusercontent.com', `${process.env.NEXT_PUBLIC_URL}`],
+  },
 }
 
-export default nextConfig
+module.exports = nextConfig
